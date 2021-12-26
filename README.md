@@ -17,7 +17,8 @@ UX/UIやバックエンドとのワークフローに関係しそうな内容（
 
 ### 参考にしたもの
 
-- [Vite で最速 React & TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
+- [Viteで最速React&TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
+- [Vite+Reactの環境構築](https://zenn.dev/kk6/scraps/36fa4579df6acb)
 
 ## これから含めるもの
 
