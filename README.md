@@ -8,21 +8,19 @@ UX/UIやバックエンドとのワークフローに関係しそうな内容（
 
 ## 含めたもの
 
-- ビルドツール
+- ビルドツール、JSフレームワーク、プログラミング言語
   - [Vite](https://vitejs.dev/)
-- JSフレームワーク
   - [React](https://ja.reactjs.org/)
-- プログラミング言語
   - [TypeScript](https://www.typescriptlang.org/)
-
-### 参考にしたもの
-
-- [Viteで最速React&TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
-- [Vite+Reactの環境構築](https://zenn.dev/kk6/scraps/36fa4579df6acb)
+  - 参考にしたもの
+    - [Viteで最速React&TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
+- 静的解析ツール
+  - [ESLint](https://eslint.org/)
+  - 参考にしたもの
+    - [Vite+Reactの環境構築](https://zenn.dev/kk6/scraps/36fa4579df6acb)
 
 ## これから含めるもの
 
-- 静的解析ツール
 - コードフォーマッター
 - CSSフレームワーク
 - ルーティング
