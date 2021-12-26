@@ -15,6 +15,10 @@ UX/UIやバックエンドとのワークフローに関係しそうな内容（
 - プログラミング言語
   - [TypeScript](https://www.typescriptlang.org/)
 
+### 参考にしたもの
+
+- [Vite で最速 React & TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
+
 ## これから含めるもの
 
 - 静的解析ツール
