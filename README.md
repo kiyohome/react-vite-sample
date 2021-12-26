@@ -1,28 +1,28 @@
 # react-vite-sample
 
-プロト作成をすぐに始められるようにReactベースで多くのSPAに共通しそうな内容をセットアップしたサンプルプロジェクトです。
+プロト作成をすぐに始められるように React ベースで多くの SPA に共通しそうな内容をセットアップしたサンプルプロジェクトです。
 
-プロト作成とドッグフーディングを繰り返し、勝算が見えてきたらUX/UIやバックエンドを見直して本格的な開発に移ることを想定しているので、
-UX/UIやバックエンドとのワークフローに関係しそうな内容（デザインシステム、UIコンポーネント、クライアントコードの自動生成など）は
+プロト作成とドッグフーディングを繰り返し、勝算が見えてきたら UX/UI やバックエンドを見直して本格的な開発に移ることを想定しているので、
+UX/UI やバックエンドとのワークフローに関係しそうな内容（デザインシステム、UI コンポーネント、クライアントコードの自動生成など）は
 サンプルプロジェクトに含めていません。
 
 ## 含めたもの
 
-- ビルドツール、JSフレームワーク、プログラミング言語
+- ビルドツール、JS フレームワーク、プログラミング言語
   - [Vite](https://vitejs.dev/)
   - [React](https://ja.reactjs.org/)
   - [TypeScript](https://www.typescriptlang.org/)
   - 参考にしたもの
-    - [Viteで最速React&TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
-- 静的解析ツール
+    - [Vite で最速 React&TypeScript](https://zenn.dev/sprout2000/articles/98145cf2a807b1)
+- 静的解析ツール、コードフォーマッター
   - [ESLint](https://eslint.org/)
+  - [Prettier](https://prettier.io/)
   - 参考にしたもの
-    - [Vite+Reactの環境構築](https://zenn.dev/kk6/scraps/36fa4579df6acb)
+    - [Vite+React の環境構築](https://zenn.dev/kk6/scraps/36fa4579df6acb)
 
 ## これから含めるもの
 
-- コードフォーマッター
-- CSSフレームワーク
+- CSS フレームワーク
 - ルーティング
 - バリデーション
 - 状態管理
@@ -33,5 +33,5 @@ UX/UIやバックエンドとのワークフローに関係しそうな内容（
 ## 含めないもの
 
 - デザインシステム
-- UIコンポーネント
+- UI コンポーネント
 - クライアントコードの自動生成
