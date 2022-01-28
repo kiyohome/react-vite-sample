@@ -19,11 +19,12 @@ UX/UI やバックエンドとのワークフローに関係しそうな内容�
   - [Prettier](https://prettier.io/)
   - 参考にしたもの
     - [Vite+React の環境構築](https://zenn.dev/kk6/scraps/36fa4579df6acb)
+- ルーティング
+  - [React Router](https://reactrouter.com/)
+  - [Tutorial](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 
 ## これから含めるもの
 
-- ルーティング
-  - [React Router](https://reactrouter.com/)
 - コンポーネントライブラリ
   - [Mantine](https://mantine.dev/)
 - バリデーション
