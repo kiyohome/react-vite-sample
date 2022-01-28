@@ -22,16 +22,27 @@ UX/UI やバックエンドとのワークフローに関係しそうな内容�
 
 ## これから含めるもの
 
-- CSS フレームワーク
 - ルーティング
+  - [React Router](https://reactrouter.com/)
+- コンポーネントライブラリ
+  - [Mantine](https://mantine.dev/)
 - バリデーション
+  - [v8n](https://imbrn.github.io/v8n/)
+- エラー処理
+  - [Error Boundary](https://ja.reactjs.org/docs/error-boundaries.html)
+  - [Error Boundary を Function Component で扱う](https://kudolog.net/posts/func-error-boundary/)
+  - [React Suspense での非同期処理のエラー処理パターン](https://zenn.dev/berlysia/articles/5dfa58f282aa14)
 - 状態管理
+  - [React を取り巻く状態管理の潮流を学ぼう。Hooks や Server Components などの登場で何が変わるか](https://eh-career.com/engineerhub/entry/2022/01/13/090000)
+  - [「3 種類」で管理する React の State 戦略](https://zenn.dev/yoshiko/articles/607ec0c9b0408d)
 - モックライブラリ
+  - [フロントエンドのテストのモックには msw を使うのが最近の流行りらしい](https://zenn.dev/azukiazusa/articles/using-msw-to-mock-frontend-tests)
 - モーダル
+  - [Modals manager](https://mantine.dev/others/modals/)
 - ドラッグ＆ドロップ
+  - [React DnD](https://react-dnd.github.io/react-dnd/about)
 
 ## 含めないもの
 
 - デザインシステム
-- UI コンポーネント
 - クライアントコードの自動生成
