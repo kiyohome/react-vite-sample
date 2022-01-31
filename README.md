@@ -22,11 +22,11 @@ UX/UI やバックエンドとのワークフローに関係しそうな内容�
 - ルーティング
   - [React Router](https://reactrouter.com/)
   - [Tutorial](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
+- コンポーネントライブラリ
+  - [Mantine](https://mantine.dev/)
 
 ## これから含めるもの
 
-- コンポーネントライブラリ
-  - [Mantine](https://mantine.dev/)
 - バリデーション
   - [v8n](https://imbrn.github.io/v8n/)
 - エラー処理
