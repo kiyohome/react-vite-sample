@@ -1,5 +1,3 @@
-import { Text } from '@mantine/core';
-
-const NotFound = () => <Text>There&apos;s nothing here!</Text>;
+const NotFound = () => <>There&apos;s nothing here!</>;
 
 export default NotFound;

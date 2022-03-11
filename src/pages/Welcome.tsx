@@ -1,5 +1,3 @@
-import { Text } from '@mantine/core';
-
-const Welcome = () => <Text>Welcome to CREATE!</Text>;
+const Welcome = () => <>Welcome to CREATE!</>;
 
 export default Welcome;

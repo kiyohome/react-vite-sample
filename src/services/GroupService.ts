@@ -14,8 +14,8 @@ const getGropus = (userId: string): Group[] =>
     (group) => group.members.filter((user) => user.id === userId).length > 0,
   );
 
-const GroupAPI = {
+const GroupService = {
   getGropus,
 };
 
-export default GroupAPI;
+export default GroupService;

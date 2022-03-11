@@ -9,21 +9,30 @@ import {
   Image,
   MediaQuery,
   Navbar,
-  Text,
   useMantineTheme,
 } from '@mantine/core';
 import logo from './logo.svg';
 
 const App = () => {
   const [opened, setOpened] = useState(false);
+
   const theme = useMantineTheme();
+
   const links = [
     { label: 'Events', path: '/events' },
     { label: 'Groups', path: '/groups' },
   ];
+
   const close = () => setOpened(false);
+
   return (
     <AppShell
+      styles={{
+        main: {
+          paddingLeft: `${theme.spacing.md}px`,
+          paddingRight: `${theme.spacing.md}px`,
+        },
+      }}
       navbarOffsetBreakpoint="sm"
       fixed
       navbar={
@@ -43,7 +52,7 @@ const App = () => {
                 mb={5}
                 onClick={close}
               >
-                <Text>{link.label}</Text>
+                {link.label}
               </Anchor>
             ))}
           </Navbar.Section>
@@ -64,7 +73,7 @@ const App = () => {
               onClick={close}
             >
               <Image src={logo} width={40} height={40} />
-              <Text>CREATE</Text>
+              CREATE
             </Anchor>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger

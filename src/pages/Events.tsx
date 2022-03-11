@@ -1,24 +1,34 @@
-import { Table, Text, Title } from '@mantine/core';
-import EventAPI from '../api/EventAPI';
+import {
+  Anchor,
+  Button,
+  Group,
+  Modal,
+  Table,
+  Text,
+  TextInput,
+  Title,
+} from '@mantine/core';
+import { useState } from 'react';
+import EventService from '../services/EventService';
 import Utils from '../common/Utils';
 import useIsMobile from './Hooks';
 
 const Events = () => {
   const isMobile = useIsMobile();
-  const events = EventAPI.getEvents('G001').map((event) => (
+
+  const events = EventService.getEvents('G001').map((event) => (
     <tr key={event.id}>
       {isMobile ? (
         <td>
-          <div>
-            <Text>{event.name}</Text>
-          </div>
+          <div>{event.name}</div>
           {event.openingTimes.map((dateTime) => (
             <div key={dateTime.from.getTime()}>
               <Text color="dimmed" size="xs">
-                {Utils.formatDateTime(dateTime)}
+                {Utils.formatOpeningTime(dateTime)}
               </Text>
             </div>
           ))}
+          <div>{Utils.formatNumber(event.capacity)}</div>
         </td>
       ) : (
         <>
@@ -26,38 +36,48 @@ const Events = () => {
           <td>
             {event.openingTimes.map((dateTime) => (
               <div key={dateTime.from.getTime()}>
-                <Text>{Utils.formatDateTime(dateTime)}</Text>
+                {Utils.formatOpeningTime(dateTime)}
               </div>
             ))}
           </td>
+          <td>{Utils.formatNumber(event.capacity)}</td>
         </>
       )}
     </tr>
   ));
+
+  const [addOpened, setAddOpened] = useState(false);
+
   return (
     <>
-      <Title order={2}>Events</Title>
+      <Group position="apart">
+        <Title order={2}>Events</Title>
+        <Anchor onClick={() => setAddOpened(true)}>Add</Anchor>
+      </Group>
       <Table highlightOnHover>
         <thead>
           <tr>
             {isMobile ? (
-              <th>
-                <Text>&nbsp;</Text>
-              </th>
+              <th>&nbsp;</th>
             ) : (
               <>
-                <th>
-                  <Text>Name</Text>
-                </th>
-                <th>
-                  <Text>Date and time</Text>
-                </th>
+                <th>Name</th>
+                <th>Opening time</th>
+                <th>Capacity</th>
               </>
             )}
           </tr>
         </thead>
         <tbody>{events}</tbody>
       </Table>
+      <Modal
+        opened={addOpened}
+        onClose={() => setAddOpened(false)}
+        title="Add a new event"
+        centered
+      >
+        Hoge
+      </Modal>
     </>
   );
 };

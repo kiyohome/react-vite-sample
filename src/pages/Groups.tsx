@@ -1,10 +1,11 @@
 import { Table, Text, Title } from '@mantine/core';
-import GroupAPI from '../api/GroupAPI';
+import GroupService from '../services/GroupService';
 import useIsMobile from './Hooks';
 
 const Groups = () => {
   const isMobile = useIsMobile();
-  const groups = GroupAPI.getGropus('U001').map((group) => (
+
+  const groups = GroupService.getGropus('U001').map((group) => (
     <tr key={group.id}>
       {isMobile ? (
         <td>
@@ -22,15 +23,14 @@ const Groups = () => {
           <td>{group.name}</td>
           <td>
             {group.members.map((member) => (
-              <div key={member.id}>
-                <Text>{member.name}</Text>
-              </div>
+              <div key={member.id}>{member.name}</div>
             ))}
           </td>
         </>
       )}
     </tr>
   ));
+
   return (
     <>
       <Title order={2}>Groups</Title>
@@ -38,17 +38,11 @@ const Groups = () => {
         <thead>
           <tr>
             {isMobile ? (
-              <th>
-                <Text>&nbsp;</Text>
-              </th>
+              <th>&nbsp;</th>
             ) : (
               <>
-                <th>
-                  <Text>Name</Text>
-                </th>
-                <th>
-                  <Text>Members</Text>
-                </th>
+                <th>Name</th>
+                <th>Members</th>
               </>
             )}
           </tr>
