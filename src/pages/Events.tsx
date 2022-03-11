@@ -12,6 +12,7 @@ import { useState } from 'react';
 import EventService from '../services/EventService';
 import Utils from '../common/Utils';
 import useIsMobile from './Hooks';
+import Event from './Event';
 
 const Events = () => {
   const isMobile = useIsMobile();
@@ -76,7 +77,7 @@ const Events = () => {
         title="Add a new event"
         centered
       >
-        Hoge
+        <Event />
       </Modal>
     </>
   );
