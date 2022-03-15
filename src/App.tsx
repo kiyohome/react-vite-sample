@@ -37,7 +37,7 @@ const App = () => {
       fixed
       navbar={
         <Navbar
-          padding="md"
+          p="md"
           hiddenBreakpoint="sm"
           hidden={!opened}
           width={{ sm: 200, lg: 200 }}
@@ -59,7 +59,7 @@ const App = () => {
         </Navbar>
       }
       header={
-        <Header height={70} padding="md">
+        <Header height={70} p="md">
           <Group position="apart">
             <Anchor
               component={Link}

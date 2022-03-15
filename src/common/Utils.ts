@@ -27,7 +27,7 @@ class Utils {
 
   static getLocale(): Locale {
     const locale = Constants.LOCALES.get(window.navigator.language);
-    return typeof locale === 'undefined' ? Constants.DEFAULT_LOCALE : locale;
+    return locale === undefined ? Constants.DEFAULT_LOCALE : locale;
   }
 }
 

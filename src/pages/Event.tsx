@@ -1,12 +1,12 @@
 import { Button, Group, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/hooks';
+import { useForm } from '@mantine/form';
 
 const Event = () => {
   const form = useForm({
     initialValues: {
       name: '',
     },
-    validationRules: {
+    validate: {
       name: (value) =>
         value.length < 2 ? 'Name must have at least 2 letters' : null,
     },

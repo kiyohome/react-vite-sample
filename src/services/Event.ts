@@ -5,15 +5,15 @@ class Event {
 
   name: string;
 
-  openingTimes: OpeningTime[];
+  openingTimes?: OpeningTime[];
 
-  capacity: number;
+  capacity?: number;
 
   constructor(
     id: string,
     name: string,
-    openingTimes: OpeningTime[],
-    capacity: number,
+    openingTimes?: OpeningTime[],
+    capacity?: number,
   ) {
     this.id = id;
     this.name = name;

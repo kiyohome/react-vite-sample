@@ -1,11 +1,14 @@
 import { Table, Text, Title } from '@mantine/core';
+import { useQuery } from 'react-query';
 import GroupService from '../services/GroupService';
 import useIsMobile from './Hooks';
 
 const Groups = () => {
   const isMobile = useIsMobile();
 
-  const groups = GroupService.getGropus('U001').map((group) => (
+  const groups = useQuery('groups', () => GroupService.getGroups('U1')).data;
+
+  const groupRows = groups?.map((group) => (
     <tr key={group.id}>
       {isMobile ? (
         <td>
@@ -47,7 +50,7 @@ const Groups = () => {
             )}
           </tr>
         </thead>
-        <tbody>{groups}</tbody>
+        <tbody>{groupRows}</tbody>
       </Table>
     </>
   );

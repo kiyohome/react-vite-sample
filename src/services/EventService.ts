@@ -1,44 +1,53 @@
-import OpeningTime from './OpeningTime';
 import Event from './Event';
+import GroupService from './GroupService';
 
-const data: Map<string, Event[]> = new Map();
+const getEvents = async (groupId: string): Promise<Event[]> => {
+  const group = await GroupService.getGroup(groupId);
+  const { events } = group;
+  return events === undefined ? [] : events;
+};
 
-data.set('G001', [
-  new Event(
-    'E001',
-    '鶴ヶ城さくらまつり',
-    [
-      new OpeningTime('2022/4/3 9:00', '2022/4/3 18:00'),
-      new OpeningTime('2022/4/4 9:00', '2022/4/3 18:00'),
-      new OpeningTime('2022/4/5 9:00', '2022/4/3 18:00'),
-    ],
-    1000,
-  ),
-  new Event(
-    'E002',
-    '会津祭り',
-    [
-      new OpeningTime('2022/9/18 9:00', '2022/9/18 18:00'),
-      new OpeningTime('2022/9/19 9:00', '2022/9/19 20:00'),
-      new OpeningTime('2022/9/20 9:00', '2022/9/20 18:00'),
-    ],
-    50000,
-  ),
-  new Event(
-    'E003',
-    '鶴ヶ城ハーフマラソン大会',
-    [new OpeningTime('2022/10/2 8:45', '2022/10/2 13:30')],
-    400,
-  ),
-]);
+const addEvent = async (groupId: string, name: string): Promise<Event> => {
+  const events = await getEvents(groupId);
+  const next = events.length + 1;
+  const id = `${groupId}E${next}`;
+  const event = new Event(id, name);
+  const group = await GroupService.getGroup(groupId);
+  group.events = group.events?.concat(event);
+  return event;
+};
 
-const getEvents = (userId: string): Event[] => {
-  const events = data.get(userId);
-  return typeof events === 'undefined' ? [] : events;
+const getEvent = async (groupId: string, eventId: string): Promise<Event> => {
+  let event;
+  const events = await getEvents(groupId);
+  if (events !== undefined) {
+    event = events.find((e) => e.id === eventId);
+  }
+  if (event === undefined) {
+    throw new Error(
+      `Event not found. Group ID = [${groupId}] Event ID = [${eventId}]`,
+    );
+  }
+  return event;
+};
+
+const changeEvent = async (groupId: string, event: Event): Promise<void> => {
+  const originalEvent = await getEvent(groupId, event.id);
+  originalEvent.name = event.name;
+  originalEvent.openingTimes = event.openingTimes;
+};
+
+const deleteEvent = async (groupId: string, eventId: string): Promise<void> => {
+  const group = await GroupService.getGroup(groupId);
+  group.events = group.events?.filter((e) => e.id !== eventId);
 };
 
 const EventService = {
   getEvents,
+  addEvent,
+  getEvent,
+  changeEvent,
+  deleteEvent,
 };
 
 export default EventService;

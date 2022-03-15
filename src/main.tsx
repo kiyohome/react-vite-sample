@@ -2,22 +2,24 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MantineProvider } from '@mantine/core';
-import { ModalsProvider } from '@mantine/modals';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import App from './App';
 import NotFound from './pages/NotFound';
 import Groups from './pages/Groups';
 import Events from './pages/Events';
 import Welcome from './pages/Welcome';
 
+const client = new QueryClient();
+
 render(
   <React.StrictMode>
-    <MantineProvider
-      theme={{
-        fontFamily: 'Noto Sans JP, sans-serif',
-        headings: { fontFamily: 'Noto Sans JP, sans-serif' },
-      }}
-    >
-      <ModalsProvider>
+    <QueryClientProvider client={client}>
+      <MantineProvider
+        theme={{
+          fontFamily: 'Noto Sans JP, sans-serif',
+          headings: { fontFamily: 'Noto Sans JP, sans-serif' },
+        }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />}>
@@ -28,8 +30,8 @@ render(
             </Route>
           </Routes>
         </BrowserRouter>
-      </ModalsProvider>
-    </MantineProvider>
+      </MantineProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
