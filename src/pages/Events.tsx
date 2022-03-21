@@ -1,8 +1,10 @@
 import {
+  Alert,
   Anchor,
+  Chip,
+  Chips,
   Group,
   Modal,
-  Select,
   Table,
   Text,
   Title,
@@ -21,7 +23,7 @@ const Events = () => {
   const [groupId, setGroupId] = useState('');
   const groups = useQuery('groups', () => GroupService.getGroups('U1')).data;
   const events = useQuery(['events', groupId], () =>
-    groupId !== undefined ? EventService.getEvents(groupId) : [],
+    groupId !== '' ? EventService.getEvents(groupId) : [],
   ).data;
 
   const eventRows = events?.map((event) => (
@@ -68,34 +70,39 @@ const Events = () => {
         <Title order={2}>Events</Title>
         <Anchor onClick={() => setAddOpened(true)}>Add</Anchor>
       </Group>
-      <Group mt="md">
-        <Select
-          placeholder="Pick a group"
-          data={
-            groups !== undefined
-              ? groups?.map((g) => ({ value: g.id, label: g.name }))
-              : []
-          }
-          value={groupId}
-          onChange={setGroupId}
-        />
-      </Group>
-      <Table mt="md" highlightOnHover>
-        <thead>
-          <tr>
-            {isMobile ? (
-              <th>&nbsp;</th>
-            ) : (
-              <>
-                <th>Name</th>
-                <th>Opening time</th>
-                <th>Capacity</th>
-              </>
-            )}
-          </tr>
-        </thead>
-        <tbody>{eventRows}</tbody>
-      </Table>
+      <Chips
+        mt="md"
+        variant="filled"
+        multiple={false}
+        value={groupId}
+        onChange={setGroupId}
+      >
+        {groups!.map((g) => (
+          <Chip value={g.id}>{g.name}</Chip>
+        ))}
+      </Chips>
+      {events!.length > 0 ? (
+        <Table mt="md" highlightOnHover>
+          <thead>
+            <tr>
+              {isMobile ? (
+                <th>&nbsp;</th>
+              ) : (
+                <>
+                  <th>Name</th>
+                  <th>Opening time</th>
+                  <th>Capacity</th>
+                </>
+              )}
+            </tr>
+          </thead>
+          <tbody>{eventRows}</tbody>
+        </Table>
+      ) : (
+        <Alert mt="md" color="green">
+          {groups!.length > 0 ? 'Pick a group.' : 'Add a group!'}
+        </Alert>
+      )}
       <Modal
         opened={addOpened}
         onClose={() => setAddOpened(false)}

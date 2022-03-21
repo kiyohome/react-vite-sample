@@ -9,7 +9,13 @@ import Groups from './pages/Groups';
 import Events from './pages/Events';
 import Welcome from './pages/Welcome';
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
 
 render(
   <React.StrictMode>

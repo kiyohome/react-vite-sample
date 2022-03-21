@@ -1,4 +1,4 @@
-import OpeningTime from './OpeningTime';
+import OpeningTime from '../common/OpeningTime';
 
 class Event {
   id: string;

@@ -1,6 +1,6 @@
 import Event from './Event';
 import Group from './Group';
-import OpeningTime from './OpeningTime';
+import OpeningTime from '../common/OpeningTime';
 import User from './User';
 
 const data: Group[] = [

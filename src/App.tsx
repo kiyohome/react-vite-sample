@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import {
   Anchor,
   AppShell,
@@ -7,6 +7,7 @@ import {
   Group,
   Header,
   Image,
+  Loader,
   MediaQuery,
   Navbar,
   useMantineTheme,
@@ -87,7 +88,9 @@ const App = () => {
         </Header>
       }
     >
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </AppShell>
   );
 };

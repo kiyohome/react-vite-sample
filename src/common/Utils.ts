@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import OpeningTime from '../services/OpeningTime';
+import OpeningTime from './OpeningTime';
 import Constants from './Constants';
 import Locale from './Locale';
 
