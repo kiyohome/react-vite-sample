@@ -4,6 +4,7 @@ import {
   Anchor,
   AppShell,
   Burger,
+  Center,
   Group,
   Header,
   Image,
@@ -88,7 +89,13 @@ const App = () => {
         </Header>
       }
     >
-      <Suspense fallback={<Loader />}>
+      <Suspense
+        fallback={
+          <Center>
+            <Loader variant="dots" />
+          </Center>
+        }
+      >
         <Outlet />
       </Suspense>
     </AppShell>
