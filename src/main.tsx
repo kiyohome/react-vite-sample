@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import App from './App';
 import NotFound from './pages/NotFound';
 import Groups from './pages/Groups';
@@ -13,6 +14,7 @@ const client = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
+      useErrorBoundary: true,
     },
   },
 });
@@ -37,6 +39,7 @@ render(
           </Routes>
         </BrowserRouter>
       </MantineProvider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root'),

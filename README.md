@@ -28,7 +28,7 @@ UX/UI デザインやスキーマ開発のワークフローに関係しそう�
 
 - バリデーション
   - [v8n](https://imbrn.github.io/v8n/)
-- エラー処理
+- エラー処理、ローディング
   - [Error Boundary](https://ja.reactjs.org/docs/error-boundaries.html)
   - [Error Boundary を Function Component で扱う](https://kudolog.net/posts/func-error-boundary/)
   - [React Suspense での非同期処理のエラー処理パターン](https://zenn.dev/berlysia/articles/5dfa58f282aa14)

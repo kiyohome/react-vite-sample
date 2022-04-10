@@ -68,11 +68,15 @@ const data: Group[] = [
   ),
 ];
 
-const getGroups = async (userId: string): Promise<Group[]> =>
-  data.filter((group) => {
+const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
+
+const getGroups = async (userId: string): Promise<Group[]> => {
+  await sleep(3000);
+  return data.filter((group) => {
     const user = group.members.find((u) => u.id === userId);
     return user !== undefined;
   });
+};
 
 const getGroup = async (groupId: string): Promise<Group> => {
   const group = data.find((g) => g.id === groupId);

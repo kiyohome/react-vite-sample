@@ -29,6 +29,10 @@ class Utils {
     const locale = Constants.LOCALES.get(window.navigator.language);
     return locale === undefined ? Constants.DEFAULT_LOCALE : locale;
   }
+
+  static isEmpty<T>(array: Array<T>): boolean {
+    return array === undefined || array.length === 0;
+  }
 }
 
 export default Utils;

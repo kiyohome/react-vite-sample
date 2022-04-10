@@ -10,7 +10,7 @@ import {
   Title,
 } from '@mantine/core';
 import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import EventService from '../services/EventService';
 import Utils from '../common/Utils';
 import useIsMobile from './Hooks';
@@ -18,13 +18,29 @@ import Event from './Event';
 import GroupService from '../services/GroupService';
 
 const Events = () => {
+  const queryClient = useQueryClient();
   const isMobile = useIsMobile();
   const [addOpened, setAddOpened] = useState(false);
-  const [groupId, setGroupId] = useState('');
-  const groups = useQuery('groups', () => GroupService.getGroups('U1')).data;
-  const events = useQuery(['events', groupId], () =>
-    groupId !== '' ? EventService.getEvents(groupId) : [],
-  ).data;
+  const [groupId, setGroupId] = useState<string | undefined>(undefined);
+  const { data: groups } = useQuery(
+    'groups',
+    () => GroupService.getGroups('U1'),
+    {
+      onSuccess: (data) => {
+        if (groupId === undefined && !Utils.isEmpty(data)) {
+          setGroupId(data[0].id);
+          queryClient.invalidateQueries(['events', groupId]);
+        }
+      },
+    },
+  );
+  const { data: events } = useQuery(
+    ['events', groupId],
+    () => EventService.getEvents(groupId!),
+    {
+      enabled: !!groupId,
+    },
+  );
 
   const eventRows = events?.map((event) => (
     <tr key={event.id}>
@@ -77,11 +93,13 @@ const Events = () => {
         value={groupId}
         onChange={setGroupId}
       >
-        {groups!.map((g) => (
-          <Chip value={g.id}>{g.name}</Chip>
+        {groups?.map((g) => (
+          <Chip value={g.id} key={g.id}>
+            {g.name}
+          </Chip>
         ))}
       </Chips>
-      {events!.length > 0 ? (
+      {events?.length > 0 ? (
         <Table mt="md" highlightOnHover>
           <thead>
             <tr>
@@ -100,7 +118,7 @@ const Events = () => {
         </Table>
       ) : (
         <Alert mt="md" color="green">
-          {groups!.length > 0 ? 'Pick a group.' : 'Add a group!'}
+          {groups?.length > 0 ? 'Pick a group.' : 'Add a group!'}
         </Alert>
       )}
       <Modal

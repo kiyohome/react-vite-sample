@@ -1,8 +1,7 @@
 import Event from './Event';
 import GroupService from './GroupService';
 
-const sleep = (waitTime: number): Promise<void> =>
-  new Promise((resolve) => setTimeout(resolve, waitTime));
+const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
 
 const getEvents = async (groupId: string): Promise<Event[]> => {
   await sleep(3000);
